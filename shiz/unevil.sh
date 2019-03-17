@@ -1,0 +1,1 @@
+usermod -G "" evil

