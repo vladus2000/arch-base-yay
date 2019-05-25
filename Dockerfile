@@ -5,7 +5,7 @@ COPY shiz/ /
 
 RUN echo >> /etc/pacman.conf && \
 	echo '[vladus2000]' >> /etc/pacman.conf && \
-	echo 'Server = https://matt.land/repo/$arch' >> /etc/pacman.conf && \
+	echo 'Server = https://repo.matt.land/$repo/$arch' >> /etc/pacman.conf && \
 	echo 'SigLevel = PackageOptional' >> /etc/pacman.conf && \
 	pacman -Syyu --noconfirm --needed yay sudo git && \
 	useradd -G wheel evil && \
