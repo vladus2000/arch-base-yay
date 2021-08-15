@@ -4,6 +4,9 @@ MAINTAINER vladus2000 <docker@matt.land>
 COPY shiz/ /
 
 RUN echo >> /etc/pacman.conf && \
+	echo '[multilib]' >> /etc/pacman.conf && \
+	echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf && \
+	echo '' >> /etc/pacman.conf && \
 	echo '[vladus2000]' >> /etc/pacman.conf && \
 	echo 'Server = https://repo.matt.land/$repo/$arch' >> /etc/pacman.conf && \
 	echo 'SigLevel = PackageOptional' >> /etc/pacman.conf && \
@@ -16,3 +19,4 @@ RUN echo >> /etc/pacman.conf && \
 	rm -rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/*
 
 CMD /bin/bash -c /startup.sh
+
