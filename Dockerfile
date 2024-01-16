@@ -7,16 +7,15 @@ RUN echo >> /etc/pacman.conf && \
 	echo '[multilib]' >> /etc/pacman.conf && \
 	echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf && \
 	echo '' >> /etc/pacman.conf && \
-	echo '[vladus2000]' >> /etc/pacman.conf && \
-	echo 'Server = https://repo.matt.land/$repo/$arch' >> /etc/pacman.conf && \
-	echo 'SigLevel = PackageOptional' >> /etc/pacman.conf && \
-	pacman -Syyu --noconfirm --needed yay sudo git && \
+	pacman -Syyu --noconfirm --needed  sudo git && \
 	useradd -G wheel evil && \
 	mkdir ~evil && \
 	chown evil ~evil && \
 	echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
 	chmod +x /*.sh && \
-	rm -rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/*
+        /install-devel.sh && \
+	su - evil -c 'git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm --noprogressbar' && \
+        /rm-devel.sh
 
 CMD /bin/bash -c /startup.sh
 
