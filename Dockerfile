@@ -7,7 +7,7 @@ RUN echo >> /etc/pacman.conf && \
 	echo '[multilib]' >> /etc/pacman.conf && \
 	echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf && \
 	echo '' >> /etc/pacman.conf && \
-	pacman -Syyu --noconfirm --needed  sudo git && \
+	pacman -Syyu --noconfirm --needed debugedit sudo git && \
 	useradd -G wheel evil && \
 	mkdir ~evil && \
 	chown evil ~evil && \
