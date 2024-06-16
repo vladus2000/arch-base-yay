@@ -14,7 +14,7 @@ RUN echo >> /etc/pacman.conf && \
 	echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
 	chmod +x /*.sh && \
         /install-devel.sh && \
-	su - evil -c 'git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm --noprogressbar' && \
+	su - evil -c 'git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm --noprogressbar && cd .. && rm -rf yay' && \
         /rm-devel.sh
 
 CMD /bin/bash -c /startup.sh
